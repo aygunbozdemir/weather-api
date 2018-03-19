@@ -24,4 +24,5 @@ public class WeatherResource {
         }
         return null;
     }
+    // TODO getWeatherByLocaiton logic
 }

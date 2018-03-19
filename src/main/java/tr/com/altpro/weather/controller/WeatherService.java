@@ -16,7 +16,7 @@ public class WeatherService {
     private RestTemplate restTemplate;
 
     public ResponseEntity<WeatherResponse> getWeatherByCityName(String cityName) {
-        WeatherResponse response = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=2307c4fb0bedb1b9f1bcbbe8e91814d1", WeatherResponse.class);
+        WeatherResponse response = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=2307c4fb0bedb1b9f1bcbbe8e91814d1&&units=metric", WeatherResponse.class);
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
 }

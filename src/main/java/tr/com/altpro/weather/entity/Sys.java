@@ -1,5 +1,8 @@
 package tr.com.altpro.weather.entity;
 
+import lombok.Data;
+
+@Data
 public class Sys {
 
     private Integer type;

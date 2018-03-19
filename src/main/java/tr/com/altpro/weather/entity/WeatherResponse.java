@@ -3,6 +3,8 @@ package tr.com.altpro.weather.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class WeatherResponse {
 
@@ -10,7 +12,7 @@ public class WeatherResponse {
     private Coord coord;
 
     @JsonProperty("weather")
-    private Weather weather;
+    private List<Weather> weather;
 
     @JsonProperty("base")
     private String base;

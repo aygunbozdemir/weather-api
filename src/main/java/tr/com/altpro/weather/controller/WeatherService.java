@@ -19,4 +19,9 @@ public class WeatherService {
         WeatherResponse response = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=2307c4fb0bedb1b9f1bcbbe8e91814d1&&units=metric", WeatherResponse.class);
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
+
+    public ResponseEntity<WeatherResponse> getWeatherByCoordinates(double lat,double lon) {
+        WeatherResponse response = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=2307c4fb0bedb1b9f1bcbbe8e91814d1&&units=metric", WeatherResponse.class);
+        return new ResponseEntity<>(response,HttpStatus.FOUND);
+    }
 }

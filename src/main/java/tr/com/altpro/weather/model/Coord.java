@@ -1,4 +1,4 @@
-package tr.com.altpro.weather.entity;
+package tr.com.altpro.weather.model;
 
 import lombok.Data;
 

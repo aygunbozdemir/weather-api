@@ -1,4 +1,4 @@
-package tr.com.altpro.weather.entity;
+package tr.com.altpro.weather.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

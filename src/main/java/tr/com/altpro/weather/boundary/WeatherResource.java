@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import tr.com.altpro.weather.controller.WeatherService;
-import tr.com.altpro.weather.entity.WeatherResponse;
+import tr.com.altpro.weather.model.WeatherResponse;
 
 import javax.inject.Inject;
 
@@ -22,15 +22,18 @@ public class WeatherResource {
         ResponseEntity<WeatherResponse> responseEntity = weatherService.getWeatherByCityName(cityName); // TODO : add exception handling to REstTemplate
 
         if (cityName != null && !cityName.isEmpty()) {
-            return weatherService.getWeatherByCityName(cityName);
+            return responseEntity;
         }
         return null;
     }
 
     @RequestMapping(value = "/getByCoordinates",method = RequestMethod.GET)
-    public ResponseEntity<WeatherResponse> getWeatherByCoordinates(@RequestParam(value = "lat",required = true)double lat,@RequestParam(value = "lon",required = true)double lon) {
-
+    public ResponseEntity<WeatherResponse> getWeatherByCoordinates(@RequestParam(value = "lat",required = true)Double lat,@RequestParam(value = "lon",required = true)Double lon) {
        ResponseEntity<WeatherResponse> responseEntity = weatherService.getWeatherByCoordinates(lat,lon);
-        return weatherService.getWeatherByCoordinates(lat,lon);
+
+        if (lat != null && lon!=null) {
+            return responseEntity;
+        }
+        return null;
     }
 }

@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import tr.com.altpro.weather.controller.WeatherService;
+import tr.com.altpro.weather.control.WeatherService;
+import tr.com.altpro.weather.entity.WeatherEntity;
 import tr.com.altpro.weather.model.WeatherResponse;
 
 import javax.inject.Inject;
@@ -35,5 +36,11 @@ public class WeatherResource {
             return responseEntity;
         }
         return null;
+    }
+    @RequestMapping(value = "/getWeatherList",method = RequestMethod.GET)
+    public  ResponseEntity<Iterable<WeatherEntity>> getWeatherList() {
+        ResponseEntity<Iterable<WeatherEntity>> weatherList = weatherService.getWeatherList();
+
+        return weatherList;
     }
 }

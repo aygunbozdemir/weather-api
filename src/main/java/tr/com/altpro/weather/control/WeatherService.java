@@ -1,4 +1,4 @@
-package tr.com.altpro.weather.controller;
+package tr.com.altpro.weather.control;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +19,7 @@ public class WeatherService {
     @Inject
     WeatherRepository weatherRepository;
 
+
     public ResponseEntity<WeatherResponse> getWeatherByCityName(String cityName) {
         WeatherResponse response = restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=2307c4fb0bedb1b9f1bcbbe8e91814d1&&units=metric", WeatherResponse.class);
         WeatherEntity weatherEntity = convert(response);
@@ -31,6 +32,11 @@ public class WeatherService {
         WeatherEntity weatherEntity = convert(response);
         weatherRepository.save(weatherEntity);
         return new ResponseEntity<>(response, HttpStatus.FOUND);
+    }
+
+    public ResponseEntity<Iterable<WeatherEntity>> getWeatherList() {
+        Iterable<WeatherEntity> weatherList = weatherRepository.findAll();
+        return new ResponseEntity<>(weatherList, HttpStatus.FOUND);
     }
 
     private WeatherEntity convert(WeatherResponse weatherResponse) {

@@ -26,6 +26,7 @@ public class WeatherResource {
         return null;
     }
 
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @RequestMapping(value = "/getByCoordinates",method = RequestMethod.GET)
     public ResponseEntity<WeatherResponse> getWeatherByCoordinates(@RequestParam(value = "lat",required = true)Double lat,@RequestParam(value = "lon",required = true)Double lon) {
        ResponseEntity<WeatherResponse> responseEntity = weatherService.getWeatherByCoordinates(lat,lon);
